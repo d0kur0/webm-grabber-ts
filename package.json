@@ -1,6 +1,6 @@
 {
 	"name": "webm-finder",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"main": "./lib/index.js",
 	"module": "./lib/server.js",
 	"browser": {
