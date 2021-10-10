@@ -1,7 +1,12 @@
 {
 	"name": "webm-finder",
 	"version": "1.0.2",
-	"main": "src/index.ts",
+	"main": "./lib/index.js",
+	"module": "./lib/server.js",
+	"browser": {
+		"./lib/index.js": "./lib/index.js"
+	},
+	"types": "./lib/index.d.ts",
 	"repository": "git@github.com:d0kur0/webmFinder.git",
 	"author": "d0kur0 <dev.dokuro@gmail.com>",
 	"license": "MIT",
