@@ -1,12 +1,12 @@
 {
 	"name": "@d0kur0/webm-finder",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"main": "src/index.ts",
 	"repository": "git@github.com:d0kur0/webmFinder.git",
 	"author": "d0kur0 <dev.dokuro@gmail.com>",
 	"license": "MIT",
 	"publishConfig": {
-		"registry":"https://npm.pkg.github.com"
+		"registry": "https://npm.pkg.github.com"
 	},
 	"devDependencies": {
 		"@types/jest": "^27.0.2",
