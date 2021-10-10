@@ -5,9 +5,6 @@
 	"repository": "git@github.com:d0kur0/webmFinder.git",
 	"author": "d0kur0 <dev.dokuro@gmail.com>",
 	"license": "MIT",
-	"publishConfig": {
-		"registry": "https://npm.pkg.github.com"
-	},
 	"devDependencies": {
 		"@types/jest": "^27.0.2",
 		"jest": "^27.2.5",
