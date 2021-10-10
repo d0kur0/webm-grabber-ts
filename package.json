@@ -2,7 +2,7 @@
 	"name": "webm-finder",
 	"version": "1.0.3",
 	"main": "./lib/index.js",
-	"module": "./lib/server.js",
+	"module": "./lib/index.js",
 	"browser": {
 		"./lib/index.js": "./lib/index.js"
 	},
