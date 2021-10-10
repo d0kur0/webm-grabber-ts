@@ -1,5 +1,5 @@
 {
-	"name": "@d0kur0/webm-finder",
+	"name": "webm-finder",
 	"version": "1.0.2",
 	"main": "src/index.ts",
 	"repository": "git@github.com:d0kur0/webmFinder.git",
