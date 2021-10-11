@@ -1,4 +1,4 @@
-import { twoChannelFactory } from "../../src/vendors/twoChannel";
+import { twoChannelFactory } from "../../src";
 import mockAxios from "jest-mock-axios";
 import { Thread, UrlOverrider } from "../../src/types";
 
@@ -17,7 +17,6 @@ it("Check fetching threads", async () => {
 		board: "b",
 		subject: "subject 1",
 	};
-
 	const notExpectedThreadResult = {
 		id: 3,
 		url: "https://2ch.hk/b/res/3.json",

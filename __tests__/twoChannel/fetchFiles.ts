@@ -1,4 +1,4 @@
-import { twoChannelFactory } from "../../src/vendors/twoChannel";
+import { twoChannelFactory } from "../../src";
 import mockAxios from "jest-mock-axios";
 import { File } from "../../src/types";
 

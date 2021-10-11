@@ -1,4 +1,4 @@
-import { File, Files, Thread, Threads, VendorImplementation } from "../types";
+import { File, Thread, VendorImplementation } from "../types";
 import { defaultUrlOverrider } from "../utils/defaultUrlOverrider";
 import axios from "axios";
 
@@ -52,12 +52,12 @@ export const twoChannelFactory: VendorImplementation = props => {
 				previewUrl: `https://2ch.hk${rawFile.thumbnail}`,
 			}));
 
-			return !props?.requiredFileTypes
-				? files
-				: files.filter(({ url }) => {
-						const fileType = url.split(".").pop();
-						return props.requiredFileTypes?.includes(fileType || "");
-				  });
+			if (!props?.requiredFileTypes) return files;
+
+			return files.filter(({ url }) => {
+				const fileType = url.split(".").pop();
+				return props.requiredFileTypes?.includes(fileType || "");
+			});
 		},
 	};
 };
