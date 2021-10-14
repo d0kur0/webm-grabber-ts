@@ -1,4 +1,4 @@
-import { File, Files, Thread, Threads, VendorImplementation } from "../types";
+import { File, Thread, VendorImplementation } from "../types";
 import { defaultUrlOverrider } from "../utils/defaultUrlOverrider";
 import axios from "axios";
 
