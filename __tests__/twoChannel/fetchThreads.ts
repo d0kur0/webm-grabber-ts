@@ -13,13 +13,14 @@ afterEach(() => {
 it("Check fetching threads", async () => {
 	const expectedThreadResult = {
 		id: 1,
-		url: "https://2ch.hk/b/res/1.json",
+		url: "https://2ch.hk/b/res/1",
 		board: "b",
 		subject: "subject 1",
 	};
+
 	const notExpectedThreadResult = {
 		id: 3,
-		url: "https://2ch.hk/b/res/3.json",
+		url: "https://2ch.hk/b/res/3",
 		board: "b",
 		subject: "subject 3",
 	};
@@ -39,7 +40,6 @@ it("Check fetching threads with urlOverrider", async () => {
 
 	const urlOverrider: UrlOverrider = url => `https://proxy.example/${url}`;
 	const twoChannel = twoChannelFactory({ urlOverrider });
-
 	await twoChannel.fetchThreads("b");
 
 	expect(mockAxios.get).toHaveBeenCalledWith(
