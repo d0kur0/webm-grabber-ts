@@ -1,13 +1,16 @@
+import { enableFetchMocks } from "jest-fetch-mock";
+enableFetchMocks();
+import fetchMock from "jest-fetch-mock";
+
 import { twoChannelFactory } from "../../src";
-import mockAxios from "jest-mock-axios";
-import { Thread, UrlOverrider } from "../../src/types";
+import { Thread, UrlOverrider } from "../../src";
 
 const fakeResponse = {
 	threads: [{ subject: "subject 1", num: "1" }],
 };
 
-afterEach(() => {
-	mockAxios.reset();
+beforeEach(() => {
+	fetchMock.mockResponse(JSON.stringify(fakeResponse));
 });
 
 it("Check fetching threads", async () => {
@@ -25,24 +28,20 @@ it("Check fetching threads", async () => {
 		subject: "subject 3",
 	};
 
-	mockAxios.get.mockResolvedValueOnce({ data: fakeResponse });
-
 	const twoChannel = twoChannelFactory();
 	const result = await twoChannel.fetchThreads("b");
 
-	expect(mockAxios.get).toHaveBeenCalledWith("https://2ch.hk/b/threads.json");
+	expect(fetchMock.mock.calls[0][0]).toEqual("https://2ch.hk/b/threads.json");
 	expect(result).toContainEqual<Thread>(expectedThreadResult);
 	expect(result).not.toContainEqual<Thread>(notExpectedThreadResult);
 });
 
 it("Check fetching threads with urlOverrider", async () => {
-	mockAxios.get.mockResolvedValueOnce({ data: fakeResponse });
-
 	const urlOverrider: UrlOverrider = url => `https://proxy.example/${url}`;
 	const twoChannel = twoChannelFactory({ urlOverrider });
 	await twoChannel.fetchThreads("b");
 
-	expect(mockAxios.get).toHaveBeenCalledWith(
+	expect(fetchMock.mock.calls[1][0]).toEqual(
 		"https://proxy.example/https://2ch.hk/b/threads.json"
 	);
 });

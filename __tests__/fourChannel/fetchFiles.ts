@@ -1,5 +1,9 @@
+import { enableFetchMocks } from "jest-fetch-mock";
+enableFetchMocks();
+import fetchMock from "jest-fetch-mock";
+
 import { fourChannelFactory } from "../../src";
-import { File } from "../../src/types";
+import { File } from "../../src";
 
 const fakeResponse = {
 	posts: [
@@ -16,6 +20,10 @@ const fakeResponse = {
 	],
 };
 
+beforeEach(() => {
+	fetchMock.mockResponse(JSON.stringify(fakeResponse));
+});
+
 const expectedJPGFile: File = {
 	url: `https://i.4cdn.org/b/1.jpg`,
 	name: "jpg file",
@@ -29,20 +37,16 @@ const expectedWEBMFile: File = {
 };
 
 it("Check fetching files", async () => {
-	mockAxios.get.mockResolvedValueOnce({ data: fakeResponse });
-
 	const fourChannel = fourChannelFactory();
 	const fakeThread = { board: "b", id: 1, url: "", subject: "" };
 	const files = await fourChannel.fetchFiles(fakeThread);
 
-	expect(mockAxios.get).toHaveBeenCalledWith(`https://a.4cdn.org/b/res/1.json`);
+	expect(fetchMock.mock.calls[0][0]).toEqual(`https://a.4cdn.org/b/res/1.json`);
 	expect(files).toContainEqual<File>(expectedJPGFile);
 	expect(files).toContainEqual<File>(expectedWEBMFile);
 });
 
 it("Check fetching files with requiredFileTypes", async () => {
-	mockAxios.get.mockResolvedValueOnce({ data: fakeResponse });
-
 	const fourChannel = fourChannelFactory({ requiredFileTypes: ["webm"] });
 	const fakeThread = { board: "b", id: 1, url: "", subject: "" };
 	const files = await fourChannel.fetchFiles(fakeThread);

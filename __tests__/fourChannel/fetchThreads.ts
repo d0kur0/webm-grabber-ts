@@ -3,7 +3,7 @@ enableFetchMocks();
 import fetchMock from "jest-fetch-mock";
 
 import { fourChannelFactory } from "../../src";
-import { Thread, UrlOverrider } from "../../src/types";
+import { Thread, UrlOverrider } from "../../src";
 
 const fakeResponse = [
 	{
@@ -51,7 +51,7 @@ it("Check fetching threads with urlOverrider", async () => {
 	const fourChannel = fourChannelFactory({ urlOverrider });
 	await fourChannel.fetchThreads("b");
 
-	expect(fetchMock.mock.calls[0][0]).toEqual(
+	expect(fetchMock.mock.calls[1][0]).toEqual(
 		"https://proxy.example/https://a.4cdn.org/b/threads.json"
 	);
 });

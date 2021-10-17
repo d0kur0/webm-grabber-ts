@@ -48,8 +48,6 @@ export const fourChannelFactory: VendorImplementation = props => {
 					`https://a.4cdn.org/${thread.board}/res/${thread.id}.json`
 				);
 
-				console.log(requestUrl);
-
 				const response: ThreadResponse = await fetch(requestUrl).then(r => r.json());
 
 				const files = response.posts
