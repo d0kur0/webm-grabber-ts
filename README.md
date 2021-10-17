@@ -17,14 +17,14 @@ import { twoChannelFactory } from "webm-finder";
 
 // Get all files from /b/
 const twoChannel = twoChannelFactory(); // or use fourChannelFactory
-const [board] = await twoChannel.fetchThreads("b");
-const files = await twoChannel.fetchFiles(board);
+const [firstThread] = await twoChannel.fetchThreads("b");
+const files = await twoChannel.fetchFiles(firstThread);
 console.log(files);
 
 // Get files with only the required extensions
 const twoChannel = twoChannelFactory({ requiredFileTypes: ["webm"] }); // or use fourChannelFactory
-const [board] = await twoChannel.fetchThreads("b");
-const files = await twoChannel.fetchFiles(board);
+const [firstThread] = await twoChannel.fetchThreads("b");
+const files = await twoChannel.fetchFiles(firstThread);
 console.log(files);
 
 // Get all video files from miltiply boards + vendors
@@ -61,7 +61,7 @@ To bypass the CORS and use the library in the browser, you will need to make a p
 ```javascript
 const urlOverrider: UrlOverrider = url => `https://proxy.example/${url}`;
 const twoChannel = twoChannelFactory({ urlOverrider });
-const [board] = await twoChannel.fetchThreads("b");
-const files = await twoChannel.fetchFiles(board);
+const [firstThread] = await twoChannel.fetchThreads("b");
+const files = await twoChannel.fetchFiles(firstThread);
 console.log(files);
 ```
