@@ -1,10 +1,5 @@
-import mockAxios from "jest-mock-axios";
 import { fourChannelFactory } from "../../src";
 import { File } from "../../src/types";
-
-afterEach(() => {
-	mockAxios.reset();
-});
 
 const fakeResponse = {
 	posts: [
