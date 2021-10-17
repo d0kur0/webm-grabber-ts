@@ -33,23 +33,23 @@ const twoChannel = twoChannelFactory({ requiredFileTypes });
 const fourChannel = fourChannelFactory({ requiredFileTypes });
 
 const findScheme = [
-	{
-		vendor: twoChannel,
-		boards: ["media"],
-	},
-	{
-		vendor: fourChannel,
-		boards: ["b"],
-	},
+  {
+    vendor: twoChannel,
+     boards: ["media"],
+  },
+  {
+    vendor: fourChannel,
+    boards: ["b"],
+  },
 ];
 
 const files = [];
 
 for (const { vendor, boards } of findScheme) {
-	const threads = [];
+  const threads = [];
 
-	for (const board of boards) threads.push(...(await vendor.fetchThreads(board)));
-	for (const thread of threads) files.push(...(await vendor.fetchFiles(thread)));
+  for (const board of boards) threads.push(...(await vendor.fetchThreads(board)));
+  for (const thread of threads) files.push(...(await vendor.fetchFiles(thread)));
 }
 
 console.log(files);
