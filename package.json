@@ -8,6 +8,12 @@
 		"lint": "npm run lint:editorconfig && npm run lint:typescript"
 	},
 	"name": "webm-finder",
+	"description": "JavaScript realization for search videos in 2ch and 4chan boards",
+	"keywords": [
+		"webm",
+		"2ch",
+		"4chan"
+	],
 	"version": "1.0.8",
 	"main": "./dist/index.js",
 	"module": "./dist/index.js",
