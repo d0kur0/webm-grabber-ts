@@ -10,6 +10,7 @@ export type Threads = Thread[];
 export type File = {
 	url: string;
 	name: string;
+	rootThread: Thread;
 	previewUrl: string;
 };
 

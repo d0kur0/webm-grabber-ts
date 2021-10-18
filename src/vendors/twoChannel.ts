@@ -50,6 +50,7 @@ export const twoChannelFactory: VendorImplementation = props => {
 				const files = rawFiles.map<File>(rawFile => ({
 					url: `https://2ch.hk${rawFile.path}`,
 					name: rawFile.fullname,
+					rootThread: thread,
 					previewUrl: `https://2ch.hk${rawFile.thumbnail}`,
 				}));
 

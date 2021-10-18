@@ -56,6 +56,7 @@ export const fourChannelFactory: VendorImplementation = props => {
 						(rawPost): File => ({
 							url: `https://i.4cdn.org/${thread.board}/${rawPost.tim}${rawPost.ext}`,
 							name: rawPost.filename,
+							rootThread: thread,
 							previewUrl: `https://i.4cdn.org/${thread.board}/${rawPost.tim}s.jpg`,
 						})
 					);

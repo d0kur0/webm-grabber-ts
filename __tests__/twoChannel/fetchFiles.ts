@@ -4,6 +4,7 @@ import fetchMock from "jest-fetch-mock";
 
 import { twoChannelFactory } from "../../src";
 import { File } from "../../src";
+import { Thread } from "../../dist";
 
 const fakeResponse = {
 	threads: [
@@ -32,6 +33,8 @@ const fakeResponse = {
 	],
 };
 
+const fakeThread: Thread = { board: "b", id: 1, url: "", subject: "" };
+
 beforeEach(() => {
 	fetchMock.mockResponse(JSON.stringify(fakeResponse));
 });
@@ -39,18 +42,19 @@ beforeEach(() => {
 const expectedJPGFile: File = {
 	url: "https://2ch.hk/test-path.jpg",
 	name: "full name of jpg file",
+	rootThread: fakeThread,
 	previewUrl: "https://2ch.hk/test-thumbnail.jpg",
 };
 
 const expectedWEBMFile: File = {
 	url: "https://2ch.hk/test-path.webm",
 	name: "full name of webm file",
+	rootThread: fakeThread,
 	previewUrl: "https://2ch.hk/test-thumbnail.jpg",
 };
 
 it("Check fetching files", async () => {
 	const twoChannel = twoChannelFactory();
-	const fakeThread = { board: "b", id: 1, url: "", subject: "" };
 	const files = await twoChannel.fetchFiles(fakeThread);
 
 	expect(fetchMock.mock.calls[0][0]).toEqual("https://2ch.hk/b/res/1.json");
@@ -60,7 +64,6 @@ it("Check fetching files", async () => {
 
 it("Check fetching files with requiredFileTypes", async () => {
 	const twoChannel = twoChannelFactory({ requiredFileTypes: ["webm"] });
-	const fakeThread = { board: "b", id: 1, url: "", subject: "" };
 	const files = await twoChannel.fetchFiles(fakeThread);
 
 	expect(files).toContainEqual<File>(expectedWEBMFile);

@@ -4,7 +4,7 @@
 		"build": "tsc",
 		"prepare": "husky install",
 		"lint:typescript": "eslint src --ext .ts",
-		"lint:editorconfig": "editorconfig-checker src __tests__ __mocks__",
+		"lint:editorconfig": "editorconfig-checker src __tests__",
 		"lint": "npm run lint:editorconfig && npm run lint:typescript"
 	},
 	"name": "webm-finder",

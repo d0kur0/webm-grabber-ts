@@ -4,6 +4,7 @@ import fetchMock from "jest-fetch-mock";
 
 import { fourChannelFactory } from "../../src";
 import { File } from "../../src";
+import { Thread } from "../../dist";
 
 const fakeResponse = {
 	posts: [
@@ -20,6 +21,8 @@ const fakeResponse = {
 	],
 };
 
+const fakeThread: Thread = { board: "b", id: 1, url: "", subject: "" };
+
 beforeEach(() => {
 	fetchMock.mockResponse(JSON.stringify(fakeResponse));
 });
@@ -27,18 +30,19 @@ beforeEach(() => {
 const expectedJPGFile: File = {
 	url: `https://i.4cdn.org/b/1.jpg`,
 	name: "jpg file",
+	rootThread: fakeThread,
 	previewUrl: `https://i.4cdn.org/b/1s.jpg`,
 };
 
 const expectedWEBMFile: File = {
 	url: `https://i.4cdn.org/b/2.webm`,
 	name: "webm file",
+	rootThread: fakeThread,
 	previewUrl: `https://i.4cdn.org/b/2s.jpg`,
 };
 
 it("Check fetching files", async () => {
 	const fourChannel = fourChannelFactory();
-	const fakeThread = { board: "b", id: 1, url: "", subject: "" };
 	const files = await fourChannel.fetchFiles(fakeThread);
 
 	expect(fetchMock.mock.calls[0][0]).toEqual(`https://a.4cdn.org/b/res/1.json`);
@@ -48,7 +52,6 @@ it("Check fetching files", async () => {
 
 it("Check fetching files with requiredFileTypes", async () => {
 	const fourChannel = fourChannelFactory({ requiredFileTypes: ["webm"] });
-	const fakeThread = { board: "b", id: 1, url: "", subject: "" };
 	const files = await fourChannel.fetchFiles(fakeThread);
 
 	expect(files).toContainEqual<File>(expectedWEBMFile);
