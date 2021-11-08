@@ -26,7 +26,7 @@ export const twoChannelFactory: VendorImplementation = props => {
 				return response.threads.map(
 					(rawThread): Thread => ({
 						id: +rawThread.num,
-						url: `https://2ch.hk/${boardName}/res/${rawThread.num}`,
+						url: `https://2ch.hk/${boardName}/res/${rawThread.num}.html`,
 						board: boardName,
 						subject: rawThread.subject,
 					})

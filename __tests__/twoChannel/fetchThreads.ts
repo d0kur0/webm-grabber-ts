@@ -16,14 +16,14 @@ beforeEach(() => {
 it("Check fetching threads", async () => {
 	const expectedThreadResult = {
 		id: 1,
-		url: "https://2ch.hk/b/res/1",
+		url: "https://2ch.hk/b/res/1.html",
 		board: "b",
 		subject: "subject 1",
 	};
 
 	const notExpectedThreadResult = {
 		id: 3,
-		url: "https://2ch.hk/b/res/3",
+		url: "https://2ch.hk/b/res/3.html",
 		board: "b",
 		subject: "subject 3",
 	};
