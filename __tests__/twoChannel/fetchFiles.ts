@@ -4,7 +4,7 @@ import fetchMock from "jest-fetch-mock";
 
 import { twoChannelFactory } from "../../src";
 import { File } from "../../src";
-import { Thread } from "../../dist";
+import { Thread } from "../../src";
 
 const fakeResponse = {
 	threads: [
