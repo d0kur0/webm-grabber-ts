@@ -1,6 +1,6 @@
 {
 	"scripts": {
-		"test": "jest",
+		"test": "cross-env TZ='Europe/Moscow' jest",
 		"build": "tsc",
 		"prepare": "husky install",
 		"lint:typescript": "eslint src --ext .ts",
@@ -28,6 +28,7 @@
 		"@types/jest": "^27.0.2",
 		"@typescript-eslint/eslint-plugin": "^5.0.0",
 		"@typescript-eslint/parser": "^5.0.0",
+		"cross-env": "^7.0.3",
 		"editorconfig-checker": "^4.0.2",
 		"eslint": "^8.0.0",
 		"husky": "^7.0.2",
