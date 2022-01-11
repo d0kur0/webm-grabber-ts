@@ -11,12 +11,14 @@ const fakeResponse = {
 		{
 			filename: "jpg file",
 			ext: ".jpg",
-			tim: "1",
+			tim: 1641871483134,
+			time: 1641871483,
 		},
 		{
 			filename: "webm file",
 			ext: ".webm",
-			tim: "2",
+			tim: 1641871483134,
+			time: 1641871483,
 		},
 	],
 };
@@ -28,17 +30,19 @@ beforeEach(() => {
 });
 
 const expectedJPGFile: File = {
-	url: `https://i.4cdn.org/b/1.jpg`,
+	url: `https://i.4cdn.org/b/1641871483134.jpg`,
 	name: "jpg file",
 	rootThread: fakeThread,
-	previewUrl: `https://i.4cdn.org/b/1s.jpg`,
+	previewUrl: `https://i.4cdn.org/b/1641871483134s.jpg`,
+	date: 1641871483,
 };
 
 const expectedWEBMFile: File = {
-	url: `https://i.4cdn.org/b/2.webm`,
+	url: `https://i.4cdn.org/b/1641871483134.webm`,
 	name: "webm file",
 	rootThread: fakeThread,
-	previewUrl: `https://i.4cdn.org/b/2s.jpg`,
+	previewUrl: `https://i.4cdn.org/b/1641871483134s.jpg`,
+	date: 1641871483,
 };
 
 it("Check fetching files", async () => {

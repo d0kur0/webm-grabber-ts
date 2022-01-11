@@ -13,6 +13,8 @@ type ThreadResponse = {
 			ext: string;
 			filename: string;
 			tim: number;
+			time: number;
+			com: string;
 		}
 	];
 };
@@ -56,8 +58,9 @@ export const fourChannelFactory: VendorImplementation = props => {
 						(rawPost): File => ({
 							url: `https://i.4cdn.org/${thread.board}/${rawPost.tim}${rawPost.ext}`,
 							name: rawPost.filename,
-							rootThread: thread,
+							rootThread: { ...thread, subject: response.posts?.[0].com || "" },
 							previewUrl: `https://i.4cdn.org/${thread.board}/${rawPost.tim}s.jpg`,
+							date: rawPost.time,
 						})
 					);
 

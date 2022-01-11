@@ -12,6 +12,7 @@ export type File = {
 	name: string;
 	rootThread: Thread;
 	previewUrl: string;
+	date: number;
 };
 
 export type Files = File[];

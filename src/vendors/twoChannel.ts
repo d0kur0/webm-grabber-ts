@@ -10,7 +10,9 @@ type ThreadsResponse = {
 
 type ThreadResponse = {
 	threads: {
-		posts: { files: [{ fullname: string; path: string; thumbnail: string }] }[];
+		posts: {
+			files: [{ fullname: string; path: string; thumbnail: string; date: string }];
+		}[];
 	}[];
 };
 
@@ -52,6 +54,7 @@ export const twoChannelFactory: VendorImplementation = props => {
 					name: rawFile.fullname,
 					rootThread: thread,
 					previewUrl: `https://2ch.hk${rawFile.thumbnail}`,
+					date: +new Date(rawFile.date.replace(/\s(.+)\s/, " ")) / 1000 || 0,
 				}));
 
 				if (!props?.requiredFileTypes) return files;
