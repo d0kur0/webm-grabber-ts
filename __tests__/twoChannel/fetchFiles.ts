@@ -46,7 +46,7 @@ const expectedJPGFile: File = {
 	name: "full name of jpg file",
 	rootThread: fakeThread,
 	previewUrl: "https://2ch.hk/test-thumbnail.jpg",
-	date: 1667305853,
+	date: 1641904253,
 };
 
 const expectedWEBMFile: File = {
@@ -54,7 +54,7 @@ const expectedWEBMFile: File = {
 	name: "full name of webm file",
 	rootThread: fakeThread,
 	previewUrl: "https://2ch.hk/test-thumbnail.jpg",
-	date: 1667305853,
+	date: 1641904253,
 };
 
 it("Check fetching files", async () => {
