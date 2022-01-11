@@ -1,5 +1,6 @@
 import { File, Thread, VendorImplementation } from "../types";
 import { defaultUrlOverrider } from "../utils/defaultUrlOverrider";
+import { parse } from "date-fns";
 
 type ThreadsResponse = {
 	threads: {
@@ -57,7 +58,12 @@ export const twoChannelFactory: VendorImplementation = props => {
 					name: rawFile.fullname,
 					rootThread: thread,
 					previewUrl: `https://2ch.hk${rawFile.thumbnail}`,
-					date: +new Date(rawFile.date.replace(/\s(.+)\s/, " ")) / 1000 || 0,
+					date:
+						+parse(
+							rawFile.date.replace(/\s(.+)\s/, " "),
+							"dd/MM/yy HH:mm:ss",
+							new Date()
+						) / 1000,
 				}));
 
 				if (!props?.requiredFileTypes) return files;
