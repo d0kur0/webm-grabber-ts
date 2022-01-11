@@ -15,7 +15,7 @@
 		"4chan",
 		"webm"
 	],
-	"version": "1.1.9",
+	"version": "1.1.10",
 	"main": "./dist/index.js",
 	"module": "./dist/index.js",
 	"browser": {
