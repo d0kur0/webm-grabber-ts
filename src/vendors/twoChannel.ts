@@ -49,24 +49,13 @@ export const twoChannelFactory: VendorImplementation = props => {
 				const response: ThreadResponse = await fetch(requestUrl).then(r => r.json());
 				const rawFiles = response.threads?.[0].posts.map(({ files }) => files).flat();
 
-				const files = rawFiles.map<File>(rawFile => {
-					// TODO: mb simplify rewrite
-					const date =
-						+new Date(
-							new Date(rawFile.date.replace(/\s(.+)\s/, " ")).toLocaleDateString(
-								"en-US",
-								{ timeZone: "Europe/Moscow" }
-							)
-						) / 1000 || 0;
-
-					return {
-						url: `https://2ch.hk${rawFile.path}`,
-						name: rawFile.fullname,
-						rootThread: thread,
-						previewUrl: `https://2ch.hk${rawFile.thumbnail}`,
-						date,
-					};
-				});
+				const files = rawFiles.map<File>(rawFile => ({
+					url: `https://2ch.hk${rawFile.path}`,
+					name: rawFile.fullname,
+					rootThread: thread,
+					previewUrl: `https://2ch.hk${rawFile.thumbnail}`,
+					date: +new Date(rawFile.date.replace(/\s(.+)\s/, " ")) / 1000 || 0,
+				}));
 
 				if (!props?.requiredFileTypes) return files;
 
