@@ -11,22 +11,22 @@ const fakeResponse = {
 		{
 			posts: [
 				{
+					date: "11/01/22 Втр 15:30:53",
 					files: [
 						{
 							fullname: "full name of jpg file",
 							path: "/test-path.jpg",
 							thumbnail: "/test-thumbnail.jpg",
-							date: "11/01/22 Втр 15:30:53",
 						},
 					],
 				},
 				{
+					date: "11/01/22 Втр 15:30:53",
 					files: [
 						{
 							fullname: "full name of webm file",
 							path: "/test-path.webm",
 							thumbnail: "/test-thumbnail.jpg",
-							date: "11/01/22 Втр 15:30:53",
 						},
 					],
 				},

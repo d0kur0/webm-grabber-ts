@@ -11,7 +11,8 @@ type ThreadsResponse = {
 type ThreadResponse = {
 	threads: {
 		posts: {
-			files: [{ fullname: string; path: string; thumbnail: string; date: string }];
+			date: string;
+			files: [{ fullname: string; path: string; thumbnail: string }];
 		}[];
 	}[];
 };
@@ -47,7 +48,9 @@ export const twoChannelFactory: VendorImplementation = props => {
 				);
 
 				const response: ThreadResponse = await fetch(requestUrl).then(r => r.json());
-				const rawFiles = response.threads?.[0].posts.map(({ files }) => files).flat();
+				const rawFiles = response.threads?.[0].posts
+					.map(({ files, date }) => files.map(file => ({ ...file, date })))
+					.flat();
 
 				const files = rawFiles.map<File>(rawFile => ({
 					url: `https://2ch.hk${rawFile.path}`,

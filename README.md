@@ -27,7 +27,7 @@ const [firstThread] = await twoChannel.fetchThreads("b");
 const files = await twoChannel.fetchFiles(firstThread);
 console.log(files);
 
-// Get all video files from miltiply boards + vendors
+// Get all video files from multiply boards + vendors
 const requiredFileTypes = ["webm", "mp4"];
 const twoChannel = twoChannelFactory({ requiredFileTypes });
 const fourChannel = fourChannelFactory({ requiredFileTypes });
