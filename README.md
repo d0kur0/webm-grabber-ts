@@ -1,4 +1,6 @@
 # WebmFinder
+[![Npm package version](https://badgen.net/npm/v/webm-finder)](https://npmjs.com/package/webm-finder)
+
 JS utility for searching media files on imageboards, at the moment there are two implemented vendors: 2ch and 4chan. You can make adapters for any other, maybe someday I'll add something else myself.
 
 ## Installation
