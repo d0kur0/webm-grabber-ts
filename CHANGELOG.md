@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/d0kur0/webmFinder/compare/v1.0.1...v1.0.2) (2023-09-21)
+
+
+### Bug Fixes
+
+* upd readme ([8222c48](https://github.com/d0kur0/webmFinder/commit/8222c481397ef46515079052370aeb002b4061b9))
+
 ## [1.0.1](https://github.com/d0kur0/webmFinder/compare/v1.0.0...v1.0.1) (2023-09-21)
 
 
