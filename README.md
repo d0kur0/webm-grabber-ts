@@ -1,16 +1,16 @@
-# webm-grabbe
-[![Npm package version](https://badgen.net/npm/v/webm-finder)](https://npmjs.com/package/webm-grabbe)
+# webm-grabber
+[![Npm package version](https://badgen.net/npm/v/webm-grabber)](https://npmjs.com/package/webm-grabber)
 
 JS utility for searching media files on imageboards, at the moment there are two implemented vendors: 2ch and 4chan. You can make adapters for any other, maybe someday I'll add something else myself.
 
 ## Installation
 
-```npm i webm-grabbe```
+```npm i webm-grabber```
 
 ## Examples
 
 ```javascript
-import { twoChannelFactory } from "webm-finder";
+import { twoChannelFactory } from "webm-grabber";
 
 // Get all files from /b/
 const twoChannel = twoChannelFactory(); // or use fourChannelFactory
