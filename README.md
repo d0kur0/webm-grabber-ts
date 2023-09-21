@@ -8,10 +8,6 @@ if you use npm:
 
 ```npm i webm-finder```
 
-if you use yarn:
-
-```yarn add webm-finder```
-
 ## Examples
 
 ```javascript
