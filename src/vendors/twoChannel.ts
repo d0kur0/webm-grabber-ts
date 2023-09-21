@@ -50,7 +50,7 @@ export const twoChannelFactory: VendorImplementation = props => {
 
 				const response: ThreadResponse = await fetch(requestUrl).then(r => r.json());
 				const rawFiles = response.threads?.[0].posts
-					.map(({ files, date }) => files.map(file => ({ ...file, date })))
+					.map(({ files, date }) => files?.map(file => ({ ...file, date })) || [])
 					.flat();
 
 				const files = rawFiles.map<File>(rawFile => ({
