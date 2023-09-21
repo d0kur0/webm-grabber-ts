@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/d0kur0/webmFinder/compare/v1.0.2...v1.0.3) (2023-09-21)
+
+
+### Bug Fixes
+
+* scope works? ([cffce06](https://github.com/d0kur0/webmFinder/commit/cffce0616ee21886f723e5592faa04c667f6a8fb))
+
 ## [1.0.2](https://github.com/d0kur0/webmFinder/compare/v1.0.1...v1.0.2) (2023-09-21)
 
 
