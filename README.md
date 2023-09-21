@@ -1,4 +1,4 @@
-# WebmFinder
+# @d0kur0/webm-finder
 [![Npm package version](https://badgen.net/npm/v/webm-finder)](https://npmjs.com/package/webm-finder)
 
 JS utility for searching media files on imageboards, at the moment there are two implemented vendors: 2ch and 4chan. You can make adapters for any other, maybe someday I'll add something else myself.
@@ -55,6 +55,8 @@ console.log(files);
 
 ### Browser context and CORS
 
+#### Way 1: UrlOverrider
+
 To bypass the CORS and use the library in the browser, you will need to make a proxy server, for this each vendor has a urlOverrider parameter, an example of its use:
 ```javascript
 const urlOverrider: UrlOverrider = url => `https://proxy.example/${url}`;
@@ -63,3 +65,7 @@ const [firstThread] = await twoChannel.fetchThreads("b");
 const files = await twoChannel.fetchFiles(firstThread);
 console.log(files);
 ```
+
+#### Way 2: create simple node.js server
+
+Take any framework/library for create HTTP server and make enpoint for server parsed files
