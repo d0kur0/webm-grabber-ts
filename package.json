@@ -6,7 +6,7 @@
 		"lint:typescript": "eslint src --ext .ts",
 		"lint": "npm run lint:typescript"
 	},
-	"name": "@d0kur0/webm-finder",
+	"name": "webm-grabber",
 	"description": "JavaScript realization for search videos in 2ch and 4chan boards",
 	"keywords": [
 		"webm",
