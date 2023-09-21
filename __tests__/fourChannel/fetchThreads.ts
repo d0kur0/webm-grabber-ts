@@ -28,14 +28,14 @@ it("Check fetching threads", async () => {
 		id: 1,
 		url: "https://boards.4channel.org/b/thread/1",
 		board: "b",
-		subject: "undefined value",
+		subject: "",
 	};
 
 	const notExpectedThreadResult = {
 		id: 3,
 		url: "https://boards.4channel.org/b/thread/2",
 		board: "b",
-		subject: "undefined value",
+		subject: "",
 	};
 
 	const fourChannel = fourChannelFactory();
