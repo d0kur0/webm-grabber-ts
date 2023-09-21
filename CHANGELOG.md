@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/d0kur0/webmFinder/compare/v1.0.3...v1.0.4) (2023-09-21)
+
+
+### Bug Fixes
+
+* update package name ([5f5124d](https://github.com/d0kur0/webmFinder/commit/5f5124d29c4b1b89b8e1e2b27201a6037179d96f))
+
 ## [1.0.3](https://github.com/d0kur0/webmFinder/compare/v1.0.2...v1.0.3) (2023-09-21)
 
 
