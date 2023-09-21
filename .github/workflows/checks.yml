@@ -1,14 +1,14 @@
-name: checks
-on: [pull_request, workflow_dispatch]
+name: Tests & Lint
+on: [pull_request, workflow_dispatch, push]
 
 jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
         with:
-          node-version: "16.x"
+          node-version: "18.x"
       - run: npm install
       - run: npm run build
       - run: npm run lint
@@ -16,10 +16,10 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
         with:
-          node-version: "16.x"
+          node-version: "18.x"
       - run: npm install
       - run: npm run build
       - run: npm run test

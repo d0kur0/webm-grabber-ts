@@ -36,8 +36,6 @@ export const twoChannelFactory: VendorImplementation = props => {
 					})
 				);
 			} catch (error) {
-				console.warn(`twoChannel::fetchThreads error`);
-				console.error(error);
 				return [];
 			}
 		},
@@ -48,8 +46,11 @@ export const twoChannelFactory: VendorImplementation = props => {
 					`https://2ch.hk/${thread.board}/res/${thread.id}.json`
 				);
 
-				const response: ThreadResponse = await fetch(requestUrl).then(r => r.json());
-				const rawFiles = response.threads?.[0].posts
+				const response = await fetch(requestUrl);
+				if (!response.ok) return [];
+
+				const threadResponse: ThreadResponse = await response.json();
+				const rawFiles = threadResponse.threads?.[0].posts
 					.map(({ files, date }) => files?.map(file => ({ ...file, date })) || [])
 					.flat();
 
@@ -73,8 +74,6 @@ export const twoChannelFactory: VendorImplementation = props => {
 					return props.requiredFileTypes?.includes(fileType || "");
 				});
 			} catch (error) {
-				console.warn(`twoChannel::fetchFiles error`);
-				console.error(error);
 				return [];
 			}
 		},

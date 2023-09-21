@@ -34,7 +34,7 @@ export const fourChannelFactory: VendorImplementation = props => {
 						id: +rawThread.no,
 						url: `https://boards.4channel.org/${boardName}/thread/${rawThread.no}`,
 						board: boardName,
-						subject: "undefined value",
+						subject: "",
 					})
 				);
 			} catch (error) {
@@ -50,15 +50,17 @@ export const fourChannelFactory: VendorImplementation = props => {
 					`https://a.4cdn.org/${thread.board}/res/${thread.id}.json`
 				);
 
-				const response: ThreadResponse = await fetch(requestUrl).then(r => r.json());
+				const response = await fetch(requestUrl);
+				if (!response.ok) return [];
 
-				const files = response.posts
+				const filesResponse: ThreadResponse = await response.json();
+				const files = filesResponse.posts
 					.filter(post => post.filename)
 					.map(
 						(rawPost): File => ({
 							url: `https://i.4cdn.org/${thread.board}/${rawPost.tim}${rawPost.ext}`,
 							name: rawPost.filename,
-							rootThread: { ...thread, subject: response.posts?.[0].com || "" },
+							rootThread: { ...thread, subject: filesResponse.posts?.[0].com || "" },
 							previewUrl: `https://i.4cdn.org/${thread.board}/${rawPost.tim}s.jpg`,
 							date: rawPost.time,
 						})
@@ -71,8 +73,6 @@ export const fourChannelFactory: VendorImplementation = props => {
 					return props.requiredFileTypes?.includes(fileType || "");
 				});
 			} catch (error) {
-				console.warn(`fourChannel::fetchFiles error`);
-				console.error(error);
 				return [];
 			}
 		},

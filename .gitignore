@@ -1,6 +1,5 @@
 node_modules
 .idea
 yarn.lock
-package-lock.json
 dist
 yarn-error.log
