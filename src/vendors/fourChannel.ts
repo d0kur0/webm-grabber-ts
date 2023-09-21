@@ -38,8 +38,6 @@ export const fourChannelFactory: VendorImplementation = props => {
 					})
 				);
 			} catch (error) {
-				console.warn(`fourChannel::fetchThreads error`);
-				console.error(error);
 				return [];
 			}
 		},
