@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/d0kur0/webmFinder/compare/v1.0.0...v1.0.1) (2023-09-21)
+
+
+### Bug Fixes
+
+* remove useless log ([650f5d6](https://github.com/d0kur0/webmFinder/commit/650f5d6c86c3b5101cfde473b81db8c806d54bf7))
+
 # 1.0.0 (2023-09-21)
 
 
