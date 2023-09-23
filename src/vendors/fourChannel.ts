@@ -11,16 +11,30 @@ type ThreadResponse = {
 	posts: [
 		{
 			ext: string;
-			filename: string;
 			tim: number;
-			time: number;
 			com: string;
+			sub?: string;
+			time: number;
+			filename: string;
 		}
 	];
 };
 
 export const fourChannelFactory: VendorImplementation = props => {
 	const urlOverrider = props?.urlOverrider || defaultUrlOverrider;
+
+	const fetchSubject = async (thread: Thread) => {
+		const requestUrl = urlOverrider(
+			`https://a.4cdn.org/${thread.board}/res/${thread.id}.json`
+		);
+
+		const response = await fetch(requestUrl);
+		if (!response.ok) return undefined;
+
+		const postsResponse: ThreadResponse = await response.json();
+		const firstPost = postsResponse?.posts?.[0];
+		return firstPost?.sub || firstPost?.com || undefined;
+	};
 
 	return {
 		async fetchThreads(boardName: string) {
@@ -29,14 +43,20 @@ export const fourChannelFactory: VendorImplementation = props => {
 				const response: ThreadsResponse = await fetch(requestUrl).then(r => r.json());
 				const flatThreads = response.map(({ threads }) => threads).flat();
 
-				return flatThreads.map(
-					(rawThread): Thread => ({
-						id: +rawThread.no,
-						url: `https://boards.4channel.org/${boardName}/thread/${rawThread.no}`,
+				const threads = [];
+
+				for (const flatThread of flatThreads) {
+					const thread: Thread = {
+						id: +flatThread.no,
+						url: `https://boards.4channel.org/${boardName}/thread/${flatThread.no}`,
 						board: boardName,
-						subject: "",
-					})
-				);
+					};
+
+					thread.subject = await fetchSubject(thread);
+					threads.push(thread);
+				}
+
+				return threads;
 			} catch (error) {
 				return [];
 			}

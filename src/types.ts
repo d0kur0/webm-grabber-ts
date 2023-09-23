@@ -2,7 +2,7 @@ export type Thread = {
 	id: number;
 	url: string;
 	board: string;
-	subject: string;
+	subject?: string;
 };
 
 export type Threads = Thread[];
@@ -10,9 +10,9 @@ export type Threads = Thread[];
 export type File = {
 	url: string;
 	name: string;
+	date: number;
 	rootThread: Thread;
 	previewUrl: string;
-	date: number;
 };
 
 export type Files = File[];
@@ -20,8 +20,8 @@ export type Files = File[];
 export type UrlOverrider = (url: string) => string;
 
 export type VendorMethods = {
-	fetchThreads(boardName: string): Promise<Threads>;
 	fetchFiles(thread: Thread): Promise<Files>;
+	fetchThreads(boardName: string): Promise<Threads>;
 };
 
 export type VendorProps = {

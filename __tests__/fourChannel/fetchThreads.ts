@@ -23,19 +23,23 @@ beforeEach(() => {
 	fetchMock.mockResponse(JSON.stringify(fakeResponse));
 });
 
+afterEach(() => {
+	fetchMock.mockReset();
+});
+
 it("Check fetching threads", async () => {
 	const expectedThreadResult = {
 		id: 1,
 		url: "https://boards.4channel.org/b/thread/1",
 		board: "b",
-		subject: "",
+		subject: undefined,
 	};
 
 	const notExpectedThreadResult = {
 		id: 3,
 		url: "https://boards.4channel.org/b/thread/2",
 		board: "b",
-		subject: "",
+		subject: undefined,
 	};
 
 	const fourChannel = fourChannelFactory();
@@ -51,7 +55,7 @@ it("Check fetching threads with urlOverrider", async () => {
 	const fourChannel = fourChannelFactory({ urlOverrider });
 	await fourChannel.fetchThreads("b");
 
-	expect(fetchMock.mock.calls[1][0]).toEqual(
+	expect(fetchMock.mock.calls[0][0]).toEqual(
 		"https://proxy.example/https://a.4cdn.org/b/threads.json"
 	);
 });

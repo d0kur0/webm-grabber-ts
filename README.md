@@ -67,4 +67,4 @@ console.log(files);
 
 #### Way 2: create simple node.js server
 
-Take any framework/library for create HTTP server and make enpoint for server parsed files
+Take any framework/library for create HTTP server and make endpoint for serve parsed files

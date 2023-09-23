@@ -13,6 +13,10 @@ beforeEach(() => {
 	fetchMock.mockResponse(JSON.stringify(fakeResponse));
 });
 
+afterEach(() => {
+	fetchMock.mockReset();
+});
+
 it("Check fetching threads", async () => {
 	const expectedThreadResult = {
 		id: 1,
@@ -41,7 +45,7 @@ it("Check fetching threads with urlOverrider", async () => {
 	const twoChannel = twoChannelFactory({ urlOverrider });
 	await twoChannel.fetchThreads("b");
 
-	expect(fetchMock.mock.calls[1][0]).toEqual(
+	expect(fetchMock.mock.calls[0][0]).toEqual(
 		"https://proxy.example/https://2ch.hk/b/threads.json"
 	);
 });
