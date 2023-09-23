@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/d0kur0/webmFinder/compare/v1.0.4...v1.1.0) (2023-09-23)
+
+
+### Features
+
+* add fetch thread subject for 4chan, update tests ([1724d8b](https://github.com/d0kur0/webmFinder/commit/1724d8b8abc6c4fd9806c842be0b37506f864fdc))
+
 ## [1.0.4](https://github.com/d0kur0/webmFinder/compare/v1.0.3...v1.0.4) (2023-09-21)
 
 
