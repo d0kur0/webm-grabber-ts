@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/d0kur0/webmFinder/compare/v1.1.0...v1.1.1) (2023-09-25)
+
+
+### Bug Fixes
+
+* **4chan:** remove logic for fill subject of threads for reduce time of fetching, subject available on fetchFiles.rootThread ([36fe705](https://github.com/d0kur0/webmFinder/commit/36fe705b1719c295287e4752f2b0f07d15d8ee10))
+
 # [1.1.0](https://github.com/d0kur0/webmFinder/compare/v1.0.4...v1.1.0) (2023-09-23)
 
 
