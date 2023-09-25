@@ -1,5 +1,6 @@
 import { File, Thread, VendorImplementation } from "../types";
 import { defaultUrlOverrider } from "../utils/defaultUrlOverrider";
+import { th } from "date-fns/locale";
 
 type ThreadsResponse = [
 	{
@@ -52,7 +53,7 @@ export const fourChannelFactory: VendorImplementation = props => {
 						board: boardName,
 					};
 
-					thread.subject = await fetchSubject(thread);
+					thread.subject = undefined;
 					threads.push(thread);
 				}
 
@@ -74,15 +75,15 @@ export const fourChannelFactory: VendorImplementation = props => {
 				const filesResponse: ThreadResponse = await response.json();
 				const files = filesResponse.posts
 					.filter(post => post.filename)
-					.map(
-						(rawPost): File => ({
+					.map((rawPost): File => {
+						return {
 							url: `https://i.4cdn.org/${thread.board}/${rawPost.tim}${rawPost.ext}`,
 							name: rawPost.filename,
 							rootThread: { ...thread, subject: filesResponse.posts?.[0].com || "" },
 							previewUrl: `https://i.4cdn.org/${thread.board}/${rawPost.tim}s.jpg`,
 							date: rawPost.time,
-						})
-					);
+						};
+					});
 
 				if (!props?.requiredFileTypes) return files;
 
