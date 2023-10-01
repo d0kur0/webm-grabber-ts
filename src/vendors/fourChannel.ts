@@ -27,19 +27,6 @@ type ThreadResponse = {
 export const fourChannelFactory: VendorImplementation = props => {
 	const urlOverrider = props?.urlOverrider || defaultUrlOverrider;
 
-	const fetchSubject = async (thread: Thread) => {
-		const requestUrl = urlOverrider(
-			`https://a.4cdn.org/${thread.board}/res/${thread.id}.json`
-		);
-
-		const response = await fetch(requestUrl);
-		if (!response.ok) return undefined;
-
-		const postsResponse: ThreadResponse = await response.json();
-		const firstPost = postsResponse?.posts?.[0];
-		return firstPost?.sub || firstPost?.com || undefined;
-	};
-
 	return {
 		async fetchThreads(boardName: string) {
 			try {
