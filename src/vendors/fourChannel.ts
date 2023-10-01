@@ -1,6 +1,5 @@
 import { File, Thread, VendorImplementation } from "../types";
 import { defaultUrlOverrider } from "../utils/defaultUrlOverrider";
-import { th } from "date-fns/locale";
 
 type ThreadsResponse = [
 	{
@@ -11,11 +10,15 @@ type ThreadsResponse = [
 type ThreadResponse = {
 	posts: [
 		{
+			w: number;
+			h: number;
 			ext: string;
 			tim: number;
 			com: string;
 			sub?: string;
 			time: number;
+			tn_w: number;
+			tn_h: number;
 			filename: string;
 		}
 	];
@@ -79,9 +82,13 @@ export const fourChannelFactory: VendorImplementation = props => {
 						return {
 							url: `https://i.4cdn.org/${thread.board}/${rawPost.tim}${rawPost.ext}`,
 							name: rawPost.filename,
+							date: rawPost.time,
+							width: rawPost.w || 0,
+							height: rawPost.h || 0,
+							tnWidth: rawPost.tn_w || 0,
+							tnHeight: rawPost.tn_h || 0,
 							rootThread: { ...thread, subject: filesResponse.posts?.[0].com || "" },
 							previewUrl: `https://i.4cdn.org/${thread.board}/${rawPost.tim}s.jpg`,
-							date: rawPost.time,
 						};
 					});
 

@@ -17,6 +17,10 @@ const fakeResponse = {
 							fullname: "full name of jpg file",
 							path: "/test-path.jpg",
 							thumbnail: "/test-thumbnail.jpg",
+							width: 10,
+							height: 10,
+							tn_width: 10,
+							tn_height: 10,
 						},
 					],
 				},
@@ -27,6 +31,10 @@ const fakeResponse = {
 							fullname: "full name of webm file",
 							path: "/test-path.webm",
 							thumbnail: "/test-thumbnail.jpg",
+							width: 10,
+							height: 10,
+							tn_width: 10,
+							tn_height: 10,
 						},
 					],
 				},
@@ -47,6 +55,10 @@ const expectedJPGFile: File = {
 	rootThread: fakeThread,
 	previewUrl: "https://2ch.hk/test-thumbnail.jpg",
 	date: 1641904253,
+	width: 10,
+	height: 10,
+	tnWidth: 10,
+	tnHeight: 10,
 };
 
 const expectedWEBMFile: File = {
@@ -55,6 +67,10 @@ const expectedWEBMFile: File = {
 	rootThread: fakeThread,
 	previewUrl: "https://2ch.hk/test-thumbnail.jpg",
 	date: 1641904253,
+	width: 10,
+	height: 10,
+	tnWidth: 10,
+	tnHeight: 10,
 };
 
 it("Check fetching files", async () => {

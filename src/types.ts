@@ -11,6 +11,10 @@ export type File = {
 	url: string;
 	name: string;
 	date: number;
+	width: number;
+	height: number;
+	tnWidth: number;
+	tnHeight: number;
 	rootThread: Thread;
 	previewUrl: string;
 };

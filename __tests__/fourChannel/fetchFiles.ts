@@ -13,12 +13,20 @@ const fakeResponse = {
 			ext: ".jpg",
 			tim: 1641871483134,
 			time: 1641871483,
+			w: 10,
+			h: 10,
+			tn_w: 10,
+			tn_h: 10,
 		},
 		{
 			filename: "webm file",
 			ext: ".webm",
 			tim: 1641871483134,
 			time: 1641871483,
+			w: 10,
+			h: 10,
+			tn_w: 10,
+			tn_h: 10,
 		},
 	],
 };
@@ -35,6 +43,10 @@ const expectedJPGFile: File = {
 	rootThread: fakeThread,
 	previewUrl: `https://i.4cdn.org/b/1641871483134s.jpg`,
 	date: 1641871483,
+	width: 10,
+	height: 10,
+	tnWidth: 10,
+	tnHeight: 10,
 };
 
 const expectedWEBMFile: File = {
@@ -43,6 +55,10 @@ const expectedWEBMFile: File = {
 	rootThread: fakeThread,
 	previewUrl: `https://i.4cdn.org/b/1641871483134s.jpg`,
 	date: 1641871483,
+	width: 10,
+	height: 10,
+	tnWidth: 10,
+	tnHeight: 10,
 };
 
 it("Check fetching files", async () => {

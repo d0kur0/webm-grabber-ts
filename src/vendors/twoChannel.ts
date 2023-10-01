@@ -13,7 +13,17 @@ type ThreadResponse = {
 	threads: {
 		posts: {
 			date: string;
-			files: [{ fullname: string; path: string; thumbnail: string }];
+			files: [
+				{
+					path: string;
+					width: number;
+					height: number;
+					fullname: string;
+					tn_width: number;
+					tn_height: number;
+					thumbnail: string;
+				}
+			];
 		}[];
 	}[];
 };
@@ -57,14 +67,18 @@ export const twoChannelFactory: VendorImplementation = props => {
 				const files = rawFiles.map<File>(rawFile => ({
 					url: `https://2ch.hk${rawFile.path}`,
 					name: rawFile.fullname,
-					rootThread: thread,
-					previewUrl: `https://2ch.hk${rawFile.thumbnail}`,
 					date:
 						+parse(
 							rawFile.date.replace(/\s(.+)\s/, " "),
 							"dd/MM/yy HH:mm:ss",
 							new Date()
 						) / 1000,
+					width: rawFile.width || 0,
+					height: rawFile.height || 0,
+					tnWidth: rawFile.tn_width,
+					tnHeight: rawFile.tn_height,
+					rootThread: thread,
+					previewUrl: `https://2ch.hk${rawFile.thumbnail}`,
 				}));
 
 				if (!props?.requiredFileTypes) return files;
