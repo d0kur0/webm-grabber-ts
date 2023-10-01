@@ -1,3 +1,15 @@
+# [1.2.0](https://github.com/d0kur0/webmFinder/compare/v1.1.1...v1.2.0) (2023-10-01)
+
+
+### Bug Fixes
+
+* remove useless function  from codebase ([8da2718](https://github.com/d0kur0/webmFinder/commit/8da271831c61ce619293498b3460764a899bafd3))
+
+
+### Features
+
+* add width, height (and preview tn*) properties to File struct ([fe4ab6c](https://github.com/d0kur0/webmFinder/commit/fe4ab6c7eab67038b8cf84a81943db7989efa139))
+
 ## [1.1.1](https://github.com/d0kur0/webmFinder/compare/v1.1.0...v1.1.1) (2023-09-25)
 
 
