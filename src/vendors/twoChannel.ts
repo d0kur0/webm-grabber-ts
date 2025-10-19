@@ -34,13 +34,13 @@ export const twoChannelFactory: VendorImplementation = props => {
 	return {
 		async fetchThreads(boardName: string) {
 			try {
-				const requestUrl = urlOverrider(`https://2ch.hk/${boardName}/threads.json`);
+				const requestUrl = urlOverrider(`https://2ch.su/${boardName}/threads.json`);
 				const response: ThreadsResponse = await fetch(requestUrl).then(r => r.json());
 
 				return response.threads.map(
 					(rawThread): Thread => ({
 						id: +rawThread.num,
-						url: `https://2ch.hk/${boardName}/res/${rawThread.num}.html`,
+						url: `https://2ch.su/${boardName}/res/${rawThread.num}.html`,
 						board: boardName,
 						subject: rawThread.subject,
 					})
@@ -53,7 +53,7 @@ export const twoChannelFactory: VendorImplementation = props => {
 		async fetchFiles(thread: Thread) {
 			try {
 				const requestUrl = urlOverrider(
-					`https://2ch.hk/${thread.board}/res/${thread.id}.json`
+					`https://2ch.su/${thread.board}/res/${thread.id}.json`
 				);
 
 				const response = await fetch(requestUrl);
@@ -65,7 +65,7 @@ export const twoChannelFactory: VendorImplementation = props => {
 					.flat();
 
 				const files = rawFiles.map<File>(rawFile => ({
-					url: `https://2ch.hk${rawFile.path}`,
+					url: `https://2ch.su${rawFile.path}`,
 					name: rawFile.fullname,
 					date:
 						+parse(
@@ -78,7 +78,7 @@ export const twoChannelFactory: VendorImplementation = props => {
 					tnWidth: rawFile.tn_width,
 					tnHeight: rawFile.tn_height,
 					rootThread: thread,
-					previewUrl: `https://2ch.hk${rawFile.thumbnail}`,
+					previewUrl: `https://2ch.su${rawFile.thumbnail}`,
 				}));
 
 				if (!props?.requiredFileTypes) return files;
