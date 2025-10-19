@@ -21,7 +21,7 @@
 		"./dist/index.js": "./dist/index.js"
 	},
 	"types": "./dist/index.d.ts",
-	"repository": "git@github.com:d0kur0/webmFinder.git",
+	"repository": "git@github.com:d0kur0/webm-grabber-ts.git",
 	"author": "d0kur0 <dev.dokuro@gmail.com>",
 	"license": "MIT",
 	"devDependencies": {
