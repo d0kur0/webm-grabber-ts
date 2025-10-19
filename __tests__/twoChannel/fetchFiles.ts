@@ -50,10 +50,10 @@ beforeEach(() => {
 });
 
 const expectedJPGFile: File = {
-	url: "https://2ch.hk/test-path.jpg",
+	url: "https://2ch.su/test-path.jpg",
 	name: "full name of jpg file",
 	rootThread: fakeThread,
-	previewUrl: "https://2ch.hk/test-thumbnail.jpg",
+	previewUrl: "https://2ch.su/test-thumbnail.jpg",
 	date: 1641904253,
 	width: 10,
 	height: 10,
@@ -62,10 +62,10 @@ const expectedJPGFile: File = {
 };
 
 const expectedWEBMFile: File = {
-	url: "https://2ch.hk/test-path.webm",
+	url: "https://2ch.su/test-path.webm",
 	name: "full name of webm file",
 	rootThread: fakeThread,
-	previewUrl: "https://2ch.hk/test-thumbnail.jpg",
+	previewUrl: "https://2ch.su/test-thumbnail.jpg",
 	date: 1641904253,
 	width: 10,
 	height: 10,
@@ -77,7 +77,7 @@ it("Check fetching files", async () => {
 	const twoChannel = twoChannelFactory();
 	const files = await twoChannel.fetchFiles(fakeThread);
 
-	expect(fetchMock.mock.calls[0][0]).toEqual("https://2ch.hk/b/res/1.json");
+	expect(fetchMock.mock.calls[0][0]).toEqual("https://2ch.su/b/res/1.json");
 	expect(files).toContainEqual<File>(expectedJPGFile);
 	expect(files).toContainEqual<File>(expectedWEBMFile);
 });
