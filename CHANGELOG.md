@@ -1,3 +1,13 @@
+## [1.2.1](https://github.com/d0kur0/webm-grabber-ts/compare/v1.2.0...v1.2.1) (2025-10-19)
+
+
+### Bug Fixes
+
+* 2ch domain ([4857ce3](https://github.com/d0kur0/webm-grabber-ts/commit/4857ce330ed437559f94e7919172e3d04064cd0a))
+* 2ch domain ([aa3d922](https://github.com/d0kur0/webm-grabber-ts/commit/aa3d92225077cd78c86cc9217092d55cbc6a9b5c))
+* 2ch domain ([eef1068](https://github.com/d0kur0/webm-grabber-ts/commit/eef106876e08e885de55cd6e0f9d20c083033076))
+* releaser ([7078d10](https://github.com/d0kur0/webm-grabber-ts/commit/7078d10fcfbbc62d1364b0765dc0af51e48f70bf))
+
 # [1.2.0](https://github.com/d0kur0/webmFinder/compare/v1.1.1...v1.2.0) (2023-10-01)
 
 
